@@ -5,10 +5,16 @@ const cartCounterLabel = document.querySelector('#cart-counter-label');
 let cartCounter = 0;
 let cartPrice = 0;
 
+let devicesArr = [];
+
 const btnClickHandler = (e) => {
   const target = e.target;
   const interval = 2000;
 
+  const element = target.parentElement.parentElement;
+  const title = element.querySelector('.item-title');
+
+  console.log(title.innerHTML);
   let restoreHTML = null;
 
   if (typeof target !== 'object') return;
