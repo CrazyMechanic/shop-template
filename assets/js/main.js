@@ -56,3 +56,26 @@ function enableControls(t, $el, fn) {
   t.disabled = false;
   $el.addEventListener('click', fn);
 }
+
+// ----------------------------------------
+
+const btnBasket = document.getElementById('btn-basket');
+const navbar = document.getElementById('navbarSupportedContent');
+let basketContainer = document.querySelector('#basket__container');
+
+btnBasket.addEventListener('click', openCloseBasket);
+
+function openCloseBasket() {
+  if (!basketContainer) {
+    createBasketContainer();
+  } else {
+    basketContainer.remove();
+    basketContainer = null;
+  }
+}
+
+function createBasketContainer() {
+  basketContainer = document.createElement('div');
+  basketContainer.setAttribute('class', 'basket__container');
+  navbar.appendChild(basketContainer);
+}

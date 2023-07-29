@@ -55,13 +55,13 @@ function scssMin() {
     .pipe(csscomb())
     .pipe(postcss(pluginsForMinify))
     .pipe(rename({ suffix: '.min' }))
-    .pipe(dest(PATH.cssFolder))
+    .pipe(dest(PATH.cssFolder));
 }
 
 function scssDev() {
-  const pluginsForDevMode = [...PLUGINS]
+  const pluginsForDevMode = [...PLUGINS];
 
-  pluginsForDevMode.splice(1,1)
+  pluginsForDevMode.splice(1, 1);
 
   return src(PATH.scssRoot, {sourcemaps: true})
     .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
