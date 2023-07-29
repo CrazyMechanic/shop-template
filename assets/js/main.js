@@ -79,3 +79,4 @@ function createBasketContainer() {
   basketContainer.setAttribute('class', 'basket__container');
   navbar.appendChild(basketContainer);
 }
+

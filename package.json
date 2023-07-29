@@ -1,14 +1,21 @@
 {
-  "name": "front-end-shop-template",
-  "version": "1.0.0",
+  "name": "gulp-training",
+  "version": "2.0.0",
   "main": "index.js",
-  "repository": "https://github.com/Alecto/front-end-shop-template.git",
-  "author": "Alecto <fomenkoandrey@inbox.ru>",
   "license": "MIT",
-  "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.12.1",
-    "bootstrap": "^4.4.1",
-    "jquery": "^3.4.1",
-    "popper.js": "^1.16.1"
+  "devDependencies": {
+    "autoprefixer": "^10.4.14",
+    "browser-sync": "^2.29.1",
+    "css-mqpacker": "^7.0.0",
+    "cssnano": "^6.0.1",
+    "gulp": "^4.0.2",
+    "gulp-csscomb": "^3.1.0",
+    "gulp-postcss": "^9.0.1",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^5.1.0",
+    "postcss": "^8.4.23",
+    "postcss-discard-comments": "^6.0.0",
+    "sass": "^1.62.1",
+    "sort-css-media-queries": "^2.2.0"
   }
 }
