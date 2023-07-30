@@ -1,3 +1,4 @@
+/* eslint-disable newline-after-var */
 /* eslint-disable no-use-before-define */
 const contentContainer = document.querySelector('#content-container');
 const cartCounterLabel = document.querySelector('#cart-counter-label');
@@ -112,11 +113,36 @@ function createDeviceItem() {
   let deviceContainer = document.querySelector('.device__container');
 
   for (let i = 0; i < devicesArr.length; i++) {
-    let deviceItem = document.createElement('div');
+    let deviceItemDiv = document.createElement('div');
+    let deviceTitle = document.createElement('h3');
+    let devicePrice = document.createElement('p');
 
-    deviceItem.setAttribute('class', `device__item-${i + 1}`);
+    deviceTitle.setAttribute('class', 'device__title');
+    devicePrice.setAttribute('class', 'device__price');
+    deviceItemDiv.setAttribute('class', `device__item device__item-${i + 1}`);
 
-    deviceContainer.appendChild(deviceItem);
+    deviceTitle.innerHTML = devicesArr[i].title;
+    devicePrice.innerHTML = devicesArr[i].price;
+
+    let deviceItem = document.querySelector(`.device__item-${i + 1}`);
+
+    deviceItemDiv.appendChild(deviceTitle);
+    deviceItemDiv.appendChild(devicePrice);
+    deviceContainer.appendChild(deviceItemDiv);
   }
+
+  createSumPriceDiv(basketContainer);
 }
 
+function createSumPriceDiv(container) {
+  let deviceSumPrice = document.createElement('div');
+  let sumPrice = document.createElement('p');
+
+  deviceSumPrice.setAttribute('class', 'device__sum-container');
+  sumPrice.setAttribute('class', 'device__sum');
+
+  sumPrice.innerHTML = cartPrice;
+
+  deviceSumPrice.appendChild(sumPrice);
+  container.appendChild(deviceSumPrice);
+}
