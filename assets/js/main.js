@@ -2,6 +2,12 @@
 const contentContainer = document.querySelector('#content-container');
 const cartCounterLabel = document.querySelector('#cart-counter-label');
 
+// -------------------
+const btnBasket = document.getElementById('btn-basket');
+const navbar = document.getElementById('navbarSupportedContent');
+let basketContainer = document.querySelector('#basket__container');
+// ------------------------
+
 let cartCounter = 0;
 let cartPrice = 0;
 
@@ -11,10 +17,11 @@ const btnClickHandler = (e) => {
   const target = e.target;
   const interval = 2000;
 
+  // -------------------------
   const element = target.parentElement.parentElement;
   const title = element.querySelector('.item-title');
+  // ------------------------------
 
-  console.log(title.innerHTML);
   let restoreHTML = null;
 
   if (typeof target !== 'object') return;
@@ -33,6 +40,18 @@ const btnClickHandler = (e) => {
     target.innerHTML = restoreHTML;
     enableControls(target, contentContainer, btnClickHandler);
   }, interval);
+
+  // ------------------------
+  const device = {
+    title: title.innerHTML,
+    price: getMockData(target)
+  };
+
+  devicesArr.push(device);
+
+  console.log(cartPrice.toFixed(2)); // sum elem price
+  // ---------------------------
+
 };
 
 contentContainer.addEventListener('click', btnClickHandler);
@@ -65,10 +84,6 @@ function enableControls(t, $el, fn) {
 
 // ----------------------------------------
 
-const btnBasket = document.getElementById('btn-basket');
-const navbar = document.getElementById('navbarSupportedContent');
-let basketContainer = document.querySelector('#basket__container');
-
 btnBasket.addEventListener('click', openCloseBasket);
 
 function openCloseBasket() {
@@ -82,7 +97,26 @@ function openCloseBasket() {
 
 function createBasketContainer() {
   basketContainer = document.createElement('div');
+  let deviceContainer = document.createElement('div');
+
+  deviceContainer.setAttribute('class', 'device__container');
   basketContainer.setAttribute('class', 'basket__container');
+
+  basketContainer.appendChild(deviceContainer);
   navbar.appendChild(basketContainer);
+
+  createDeviceItem();
+}
+
+function createDeviceItem() {
+  let deviceContainer = document.querySelector('.device__container');
+
+  for (let i = 0; i < devicesArr.length; i++) {
+    let deviceItem = document.createElement('div');
+
+    deviceItem.setAttribute('class', `device__item-${i + 1}`);
+
+    deviceContainer.appendChild(deviceItem);
+  }
 }
 
