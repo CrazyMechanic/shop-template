@@ -22,7 +22,6 @@ const btnClickHandler = (e) => {
   const element = target.parentElement.parentElement;
   const title = element.querySelector('.item-title');
   // ------------------------------
-
   let restoreHTML = null;
 
   if (typeof target !== 'object') return;
@@ -44,13 +43,13 @@ const btnClickHandler = (e) => {
 
   // ------------------------
   const device = {
+    data: +element.dataset.device,
     title: title.innerHTML,
     price: getMockData(target)
   };
 
   devicesArr.push(device);
 
-  console.log(cartPrice.toFixed(2)); // sum elem price
   // ---------------------------
 
 };
@@ -146,3 +145,15 @@ function createSumPriceDiv(container) {
   deviceSumPrice.appendChild(sumPrice);
   container.appendChild(deviceSumPrice);
 }
+
+// ---------------------------
+function createDataSet() {
+  const itemContainerArr = document.getElementsByClassName('container-fluid');
+
+  for (let i = 0; i < itemContainerArr.length; i++) {
+    itemContainerArr[i].setAttribute('data-device', `${i}`);
+  }
+}
+
+createDataSet();
+// ---------------------------
